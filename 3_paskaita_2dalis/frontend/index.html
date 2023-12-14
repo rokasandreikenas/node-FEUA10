@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    a {
+      color: red;
+    }
+
+    form {
+      padding: 1rem;
+    }
+  </style>
+  <body>
+    <a href="./list.html">Fruit list</a>
+    <form id="fruit-form">
+      <input name="title" placeholder="Enter fruit..." />
+      <button type="submit">Add fruit</button>
+    </form>
+    <script>
+      const fruitForm = document.getElementById("fruit-form");
+
+      fruitForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const title = document.querySelector('input[name="title"]');
+        const data = { title: title.value };
+
+        fetch("http://localhost:3000/fruits", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((resp) => resp.json())
+          .then((response) => {
+            console.log(response);
+            title.textContent = "";
+          });
+      });
+    </script>
+  </body>
+</html>

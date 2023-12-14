@@ -6,9 +6,7 @@
     <title>Document</title>
   </head>
   <body>
-    <h2>Todos</h2>
-    <ol id="todo-list"></ol>
-
+    <a href="./index.html">Fruit form</a>
     <h2>Fruits</h2>
     <ul id="fruit-list"></ul>
 
@@ -25,28 +23,10 @@
         });
       };
 
-      const renderTodoList = (todos) => {
-        const list = document.getElementById("todo-list");
-
-        todos.forEach((todo) => {
-          // todo = {userId: 1, id: 1, title: 'test', completed:false}
-          const todoItem = document.createElement("li");
-          todoItem.textContent = todo.title;
-          todoItem.style = todo.completed ? "color: green" : "color: red";
-          list.append(todoItem);
-        });
-      };
-
       fetch("http://localhost:3000/fruits")
         .then((resp) => resp.json())
         .then((response) => {
           renderFruitList(response);
-        });
-
-      fetch("http://localhost:3000/todos")
-        .then((resp) => resp.json())
-        .then((response) => {
-          renderTodoList(response);
         });
     </script>
   </body>
