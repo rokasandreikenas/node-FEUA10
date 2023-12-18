@@ -6,3 +6,4 @@
 - app.get("/cars", (req, res) => { const cars = ["BMW", "Audi", "Mercedes"];res.send(cars); }); - GET pavyzdys
 - app.listen(3000, () => console.log("The server is running on port 3000")); - aplikacijos klausymo paleidimas
 - npm install cors; const cors = require("cors")
+- module.exports = data; // same as export default data
